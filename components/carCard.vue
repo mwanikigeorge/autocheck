@@ -45,7 +45,13 @@
               /></svg></span
           ><span>Grade ({{ car.gradeScore.toFixed(1) }})</span>
         </p>
-        <p class="text-sm" v-else>Grade (N/A)</p>
+        <p class="text-sm flex space-x-2 items-center" v-else>
+          <span class="flex items-center capitalize">
+            <img src="@/static/road.png" alt="road" /> &nbsp; {{ car.mileage }}
+            {{ car.mileageUnit }}</span
+          >
+          <span>Grade (N/A)</span>
+        </p>
       </div>
       <hr />
       <div class="footer flex flex-row text-sm space-x-4 text-slate-500">

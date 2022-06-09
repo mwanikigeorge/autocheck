@@ -67,6 +67,28 @@
         </div>
       </div>
     </div>
+    <div class="types bg-white">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-2 sm:grid-cols-4">
+          <div class="cartype cursor-pointer shadow-sm bg-white text-center">
+            <img class="mx-auto" src="@/static/cross.jpeg" alt="crossover" />
+            <small>Crossover</small>
+          </div>
+          <div class="cartype cursor-pointer shadow-sm bg-white text-center">
+            <img class="mx-auto" src="@/static/sedan.jpeg" alt="sedan" />
+            <small>Sedan</small>
+          </div>
+          <div class="cartype cursor-pointer shadow-sm bg-white text-center">
+            <img class="mx-auto" src="@/static/suv.jpeg" alt="suv" />
+            <small>Suv</small>
+          </div>
+          <div class="cartype cursor-pointer shadow-sm bg-white text-center">
+            <img class="mx-auto" src="@/static/sport.jpeg" alt="sport back" />
+            <small>Sport</small>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- featured cars  -->
     <div class="featured-cars container mx-auto pb-16">
       <h2 class="text-center my-10 font-bold text-3xl capitalize">
@@ -107,7 +129,9 @@
 
         <!-- car grid here -->
         <div class="cars-grid col-span-2 lg:col-span-3 grid">
-          <div
+          <TransitionGroup
+            name="carscard"
+            tag="div"
             class="grid grid-cols-1 col-start-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <CarCard
@@ -115,7 +139,8 @@
               :key="index"
               :car="car"
             />
-          </div>
+          </TransitionGroup>
+
           <div class="col-span-3 text-center">
             <button
               class="px-10 py-2 rounded-md bg-autocheck-yellow text-autocheck-blue"
@@ -132,7 +157,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -150,7 +175,7 @@ export default Vue.extend({
       makes: 'CarMakes',
       cars: 'FilteredCars',
     }),
-    filteredMake() {
+    filteredMake(): string {
       return this.cars(this.selectedMake)
     },
   },
