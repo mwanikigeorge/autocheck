@@ -14,7 +14,14 @@ const mutations = {
 
 const getters = {
   CarMakes: (state) => state.carMakes,
-  AllCars: (state) => state.cars,
+  FilteredCars: (state) => (filter) => {
+    console.log(filter)
+    if (filter === '' || filter === undefined) {
+    }
+    return state.cars.filter((car) => {
+      return car.title.toLowerCase().includes(filter.toLowerCase())
+    })
+  },
 }
 
 const actions = {

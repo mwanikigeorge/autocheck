@@ -3,11 +3,7 @@
     <div class="container mx-auto flex justify-between py-2 px-2">
       <div class="logo flex md:flex-1 flex-row justify-between">
         <a href="/">
-          <img
-            class="w-1/2 md:w-1/3"
-            src="@/static/full-color-logo-new.png"
-            alt=""
-          />
+          <img class="w-1/4" src="@/static/full-color-logo-new.png" alt="" />
         </a>
         <!-- humbugar menu -->
         <div class="humburger-menu md:hidden">

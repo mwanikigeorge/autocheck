@@ -2,7 +2,7 @@
   <div>
     <Topnav />
     <Navbar />
-    <main class="">
+    <main class="bg-slate-50">
       <Nuxt />
     </main>
   </div>

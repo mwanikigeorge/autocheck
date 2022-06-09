@@ -9,6 +9,7 @@
         >
           Search for your dream car
         </h2>
+        <p class="text-center mb-4">Find it at the right price and advice.</p>
         <div class="search-form bg-white p-6 px-8 rounded">
           <form action="#" class="flex flex-row text-autocheck-blue">
             <div class="flex flex-col w-full lg:flex-row gap-4">
@@ -68,7 +69,7 @@
     </div>
     <!-- featured cars  -->
     <div class="featured-cars container mx-auto pb-16">
-      <h2 class="text-center my-6 font-bold text-3xl capitalize">
+      <h2 class="text-center my-10 font-bold text-3xl capitalize">
         Featured Cars
       </h2>
 
@@ -77,7 +78,7 @@
         <div class="sidebar-filters col-span-2 lg:col-span-1 order-0">
           <div class="filters-container px-4">
             <h4
-              class="text-left mb-4 border-b border-slate-300 font-semibold text-3xl capitalize"
+              class="text-left mb-4 border-b border-slate-300 font-semibold text-xl capitalize"
             >
               Filters
             </h4>
@@ -89,7 +90,6 @@
                   id="make"
                   v-model="selectedMake"
                   class="w-full shadow-sm rounded-md"
-                  @change="filterMake()"
                 >
                   <option value="">Select Make</option>
                   <option
@@ -110,9 +110,13 @@
           <div
             class="grid grid-cols-1 col-start-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <CarCard v-for="(car, index) in cars" :key="index" :car="car" />
+            <CarCard
+              v-for="(car, index) in filteredMake"
+              :key="index"
+              :car="car"
+            />
           </div>
-          <div class="col-span-3">
+          <div class="col-span-3 text-center">
             <button
               class="px-10 py-2 rounded-md bg-autocheck-yellow text-autocheck-blue"
               @click="fetchMoreCars"
@@ -144,17 +148,13 @@ export default Vue.extend({
   computed: {
     ...mapGetters({
       makes: 'CarMakes',
-      cars: 'AllCars',
+      cars: 'FilteredCars',
     }),
+    filteredMake() {
+      return this.cars(this.selectedMake)
+    },
   },
   methods: {
-    filterMake() {
-      // console.log(event.target.value)
-      const filterd = this.cars.filter((car: any) =>
-        car.title.toLowerCase().includes(this.selectedMake.toLowerCase())
-      )
-      console.log(filterd)
-    },
     fetchMake() {
       this.$store.dispatch('getCarMakes')
     },

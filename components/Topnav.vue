@@ -1,9 +1,11 @@
 <template>
   <!-- top bar -->
-  <div class="top-bar container mx-auto h-10 bg-autocheck-blue text-white">
-    <ul class="flex flex-row gap-4 h-full items-center justify-center">
+  <div class="top-bar h-10 bg-autocheck-blue text-white">
+    <ul
+      class="flex text-sm flex-row gap-4 h-full items-center justify-end px-4"
+    >
       <li>
-        <a class="flex" href="#">
+        <a class="flex items-center" href="#">
           <span
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,7 @@
         >
       </li>
       <li>
-        <a class="flex" href="#">
+        <a class="flex items-center" href="#">
           <span
             ><svg
               xmlns="http://www.w3.org/2000/svg"
