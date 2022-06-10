@@ -129,7 +129,11 @@
 
         <!-- car grid here -->
         <div class="cars-grid col-span-2 lg:col-span-3 grid">
+          <div class="grid col-span-3" v-if="filteredMake.length < 1">
+            <h5>No Vehicles Found! Search for a another make.</h5>
+          </div>
           <TransitionGroup
+            v-else
             name="carscard"
             tag="div"
             class="grid grid-cols-1 col-start-2 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -143,7 +147,8 @@
 
           <div class="col-span-3 text-center">
             <button
-              class="px-10 py-2 rounded-md bg-autocheck-yellow text-autocheck-blue"
+              v-if="filteredMake.length > 3"
+              class="px-10 py-2 mt-6 rounded-md bg-autocheck-yellow text-autocheck-blue"
               @click="fetchMoreCars"
             >
               Load More
